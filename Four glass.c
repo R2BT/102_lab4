@@ -60,6 +60,11 @@ int main()
                     printf("%d\n",i+1);
                 }
             }
+            stone[0]=1;
+            for(i=1;i<4;i++)
+            {
+                stone[i]=0;
+            }
         round++;
     }
 
