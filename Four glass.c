@@ -1,76 +1,64 @@
 #include<stdio.h>
-#include<string.h>
 int main()
 {
-    char glass[50];
-    char x;
-    int stone[4]={1,0,0,0};
-    int n,round=0,i,a,b;
+    int stone[4]= {1,0,0,0};
+    int n,round=0,i,j,a,b;
     scanf("%d",&n);
-    while(round<n)
+    char glass[n][50];
+    for(i=0; i<n; i++)
     {
-        fflush(stdin);
-        scanf("%s",&glass);
-            for(i=0;glass[i]!='\0';i++)
+        scanf("%s",glass[i]);
+        for(j=0; glass[i][j]!='\0'; j++)
+        {
+            char x=glass[i][j];
+            switch(x)
             {
-                x=glass[i];
-                switch(x)
-                {
-                case'A':
-                    a=stone[1];
-                    stone[1]=stone[2];
-                    stone[2]=a;
-                    break;
-                case'B':
-                    b=stone[0];
-                    stone[0]=stone[3];
-                    stone[3]=b;
-                    break;
-                case'C':
-                    a=stone[0];
-                    b=stone[1];
-                    stone[0]=stone[2];
-                    stone[1]=stone[3];
-                    stone[2]=a;
-                    stone[3]=b;
-                    break;
-                case'D':
-                    a=stone[0];
-                    b=stone[2];
-                    stone[0]=stone[1];
-                    stone[2]=stone[3];
-                    stone[1]=a;
-                    stone[3]=b;
-                    break;
-                case'E':
-                    a=stone[0];
-                    b=stone[1];
-                    stone[0]=stone[3];
-                    stone[1]=stone[2];
-                    stone[2]=b;
-                    stone[3]=a;
-                    break;
-                default: break;
-                }
+            case'A':
+                a=stone[1];
+                stone[1]=stone[2];
+                stone[2]=a;
+                break;
+            case'B':
+                b=stone[0];
+                stone[0]=stone[3];
+                stone[3]=b;
+                break;
+            case'C':
+                a=stone[0];
+                b=stone[1];
+                stone[0]=stone[2];
+                stone[1]=stone[3];
+                stone[2]=a;
+                stone[3]=b;
+                break;
+            case'D':
+                a=stone[0];
+                b=stone[2];
+                stone[0]=stone[1];
+                stone[2]=stone[3];
+                stone[1]=a;
+                stone[3]=b;
+                break;
+            case'E':
+                a=stone[0];
+                b=stone[1];
+                stone[0]=stone[3];
+                stone[1]=stone[2];
+                stone[2]=b;
+                stone[3]=a;
+                break;
             }
-            for(i=0;i<4;i++)
+        }
+        for(int i=0; i<4; i++)
+        {
+            if(stone[i]==1)
             {
-                if(stone[i]==1)
-                {
-                    printf("%d\n",i+1);
-                }
-            }
-            stone[0]=1;
-            for(i=1;i<4;i++)
-            {
+                printf("%d\n",i+1);
                 stone[i]=0;
+                break;
             }
-        round++;
+        }
+        stone[0]=1;
     }
-
-
-
-
-
     return 0;
 }
